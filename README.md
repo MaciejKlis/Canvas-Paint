@@ -3,7 +3,7 @@
 **Project imposed by my professor**
 
 ### TODO:
-1. Paint tempale
+1. ~~Paint tempale~~
 2. Select image
 3.  Add filters:
 	a. Change of color saturation

@@ -1,0 +1,13 @@
+.content {
+	position: relative;
+	width: 500px;
+	left: calc(50% - 280px);
+	padding: 30px;
+	border: solid black 1px;
+}
+label {
+	display: block;
+}
+input {
+	width: 200px;
+}

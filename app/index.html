@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Canvas - paint</title>
+		<link rel="stylesheet" href="css/main.css">
+	</head>
+	<body>
+		<div class="content">
+			<input type="file" name="nazwa" />
+			
+			<canavas id="canvas" width="500" height="300"></canavas>
+
+			<fieldset class="filters">
+		    <legend>Filters</legend>
+
+		    <label for="satoration">Saturation</label>
+		    <input type="range" id="start" name="saturation" min="0" max="100" />
+
+		    <label for="blur">Blur</label>
+		    <input type="range" id="blur" name="blur" min="0" max="100" value="90"/>
+
+				<label for="contrast">Contrast</label>
+		    <input type="range" id="contrast" name="contrast" min="0" max="100" value="90"/>
+			</fieldset>
+		</div>
+		<script src="js/main.js" charset="utf-8"></script>
+	</body>
+</html>
