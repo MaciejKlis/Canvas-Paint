@@ -7,23 +7,24 @@
 	</head>
 	<body>
 		<div class="content">
-			<input type="file" name="nazwa" />
-			
-			<canavas id="canvas" width="500" height="300"></canavas>
+			<input type="file" name="nazwa" id="file" />
+
+			<canvas id="canvas" width="500" height="300"></canvas>
 
 			<fieldset class="filters">
 		    <legend>Filters</legend>
 
 		    <label for="satoration">Saturation</label>
-		    <input type="range" id="start" name="saturation" min="0" max="100" />
+		    <input type="range" id="start" name="saturation" min="0" max="100" disabled/>
 
 		    <label for="blur">Blur</label>
-		    <input type="range" id="blur" name="blur" min="0" max="100" value="90"/>
+		    <input type="range" id="blur" name="blur" min="0" max="100" disabled/>
 
 				<label for="contrast">Contrast</label>
-		    <input type="range" id="contrast" name="contrast" min="0" max="100" value="90"/>
+		    <input type="range" id="contrast" name="contrast" min="0" max="100" disabled/>
 			</fieldset>
 		</div>
-		<script src="js/main.js" charset="utf-8"></script>
+
+		<script src="js/main.js" ></script>
 	</body>
 </html>
