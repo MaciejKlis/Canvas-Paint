@@ -1,11 +1,17 @@
-//canvas handle
-let canvas = document.querySelector('#canvas');
-let ctx = canvas.getContext('2d');
-let img = new Image();
+"use strict";
+
 //file input handle
-let fileInpt = document.querySelector('#file');
+const fileInpt = document.querySelector('#file');
+//filters slider handle
+const opacitySlider = document.querySelector('#opacity');
 
 fileInpt.onchange = function(event){ //Execute when file input change
+	//canvas handle
+	const canvas = document.querySelector('#canvas');
+	const ctx = canvas.getContext('2d');
+	let img = new Image();
+	const imageData = ctx.getImageData(0,0,500,300);
+
 	let files = event.target.files; // FileList object
 	let file = files[0];	//handle to file
 
@@ -17,10 +23,24 @@ fileInpt.onchange = function(event){ //Execute when file input change
 			if( event.target.readyState == FileReader.DONE){ //checking status
 				img.src = event.target.result; //setting selected image to source
 				ctx.drawImage(img,0,0); //drawing Img on canvas
+
+				opacitySlider.disabled = false;
 			}
 		}
-
 	}else{
 		console.log('it is not a image');
 	}
+}
+
+opacitySlider.onchange = function(){
+	let canvas = document.querySelector("#canvas");
+	let ctx = canvas.getContext("2d");
+	let imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+	let data = imgData.data;
+
+	for(let i=0; i < data.length; i += 4){
+		data[i+3] = this.value/100 * 255;
+	}
+
+	ctx.putImageData(imgData, 0, 0);
 }
