@@ -8,5 +8,5 @@
 3.  Add filters:
 	- ~~Change of color transparency~~
 	- Change of blur
-  	- Change of contrast
+  	- ~~Change of contrast~~
 4. Possibility to drawing on image
