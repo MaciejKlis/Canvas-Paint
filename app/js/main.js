@@ -4,6 +4,7 @@
 const fileInpt = document.querySelector('#file');
 //filters slider handle
 const opacitySlider = document.querySelector('#opacity');
+const blurSlider = document.querySelector('#blur');
 const contrastSlider = document.querySelector('#contrast');
 //canvas handle
 const canvas = document.querySelector('#canvas');
@@ -13,11 +14,8 @@ const imageData = ctx.getImageData(0,0,500,300);
 let img = new Image();
 
 const imageBody = {
-	['defaultImage'] : [],
-	['displayedImage'] : [],
+	['defaultImage'] : []
 }
-
-
 
 fileInpt.onchange = function(event){ //Execute when file input change
 	let files = event.target.files; // FileList object
@@ -29,17 +27,14 @@ fileInpt.onchange = function(event){ //Execute when file input change
 		img.src = event.target.result; //setting selected image to source
 		img.onload = function(){
 			ctx.drawImage(img,0,0); //drawing Img on canvas
-			imageBody.defaultImage = ctx.getImageData(0,0,canvas.width,canvas.height).data
+			imageBody.defaultImage = ctx.getImageData(0,0,canvas.width,canvas.height)
 		}
 	}
 }
 
 opacitySlider.oninput = function(){
-	let canvas = document.querySelector("#canvas");
-	let ctx = canvas.getContext("2d");
-	let imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+	let imgData =	imageBody.defaultImage;
 	let data = imgData.data;
-	data = imageBody.defaultImage;
 
 	for(let i=0; i < data.length; i += 4){
 		data[i+3] = this.value/100 * 255;
@@ -48,12 +43,14 @@ opacitySlider.oninput = function(){
 	ctx.putImageData(imgData, 0, 0);
 }
 
-contrastSlider.oninput = function(){
-	let canvas = document.querySelector("#canvas");
-	let ctx = canvas.getContext("2d");
-	let imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
-	let data = imgData.data;
+blurSlider.oninput = function(){
+	canvas.style.filter = `blur(${this.value}px)`
 
+}
+
+contrastSlider.oninput = function(){
+	let imgData = imageBody.defaultImage;
+	let data = imgData.data;
 
 	for (var i = 0; i < data.length; i += 4) {
 		if (data[i] >= 128) {
