@@ -11,3 +11,7 @@ label {
 input {
 	width: 200px;
 }
+
+canvas:hover {
+	cursor: crosshair;
+}
